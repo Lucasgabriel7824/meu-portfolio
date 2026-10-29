@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio - Lucas Gabriel Machado</title>
+<meta name="description" content="Portfólio de um estudante de programação aprendendo Java.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #121127;
+    --superficie: #1c1a3a;
+    --texto: #edebff;
+    --suave: #a09cd0;
+    --destaque: #8c7bff;
+    --saida: #7cf0c9;
+    --linha: #2f2c5c;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    background-image: radial-gradient(60rem 30rem at 85% -5%, rgba(140,123,255,.22), transparent 60%);
+    background-repeat: no-repeat;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--saida); outline-offset: 3px; border-radius: 4px; }
+  .pagina { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Topo */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; }
+  nav .logo { font-weight: 800; text-decoration: none; letter-spacing: -.02em; }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; padding: 0; }
+  nav ul a { text-decoration: none; color: var(--suave); transition: color .2s; }
+  nav ul a:hover { color: var(--texto); }
+
+  /* Abertura */
+  .abertura { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; padding: 4rem 0 5rem; }
+  h1 { font-size: clamp(3rem, 9vw, 6.5rem); line-height: .95; font-weight: 800; letter-spacing: -.045em; }
+  .abertura p { color: var(--suave); margin-top: 1.5rem; max-width: 30rem; }
+  .codigo {
+    background: var(--superficie);
+    border: 1px solid var(--linha);
+    border-radius: 14px;
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,.7);
+    overflow: hidden;
+  }
+  .codigo .barra { display: flex; gap: .4rem; padding: .7rem 1rem; border-bottom: 1px solid var(--linha); }
+  .codigo .barra span { width: .65rem; height: .65rem; border-radius: 50%; background: var(--linha); }
+  .codigo pre {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: .88rem; line-height: 1.7;
+    padding: 1.2rem 1.3rem; min-height: 9.5rem;
+    white-space: pre-wrap; overflow-x: auto;
+  }
+  .codigo .saida {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: .88rem; padding: .9rem 1.3rem;
+    border-top: 1px dashed var(--linha); color: var(--saida);
+    min-height: 3rem;
+  }
+
+  /* Seções */
+  section { padding: 3rem 0; border-top: 1px solid var(--linha); }
+  h2 { font-size: 1.8rem; letter-spacing: -.03em; margin-bottom: 1.5rem; }
+  .sobre p { max-width: 38rem; color: var(--suave); }
+  .sobre p + p { margin-top: 1rem; }
+
+  /* Projetos */
+  .projeto { display: grid; grid-template-columns: 1fr auto; gap: 1rem 2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--linha); align-items: start; }
+  .projeto:last-child { border-bottom: 0; }
+  .projeto h3 { font-size: 1.35rem; letter-spacing: -.02em; }
+  .projeto p { color: var(--suave); margin-top: .4rem; max-width: 34rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; padding: 0; list-style: none; }
+  .tags li { font-size: .8rem; padding: .15rem .7rem; border: 1px solid var(--linha); border-radius: 99px; color: var(--suave); }
+  .acoes { display: flex; gap: .8rem; flex-wrap: wrap; }
+  .botao { text-decoration: none; padding: .55rem 1.1rem; border-radius: 99px; border: 1px solid var(--destaque); transition: background .2s, color .2s; white-space: nowrap; }
+  .botao:hover { background: var(--destaque); color: var(--fundo); }
+  .botao.cheio { background: var(--destaque); color: var(--fundo); font-weight: 600; }
+  .botao.cheio:hover { background: var(--texto); border-color: var(--texto); }
+  .em-breve { border: 1px dashed var(--linha); border-radius: 14px; padding: 1.4rem; margin-top: 1rem; color: var(--suave); }
+  .em-breve strong { color: var(--saida); font-weight: 600; }
+
+  /* Links */
+  .links { display: flex; flex-wrap: wrap; gap: .8rem; }
+
+  footer { padding: 2.5rem 0 3rem; border-top: 1px solid var(--linha); color: var(--suave); font-size: .9rem; }
+
+  @media (max-width: 760px) {
+    .abertura { grid-template-columns: 1fr; padding-top: 2rem; gap: 2.5rem; }
+    .projeto { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <nav>
+    <a class="logo" href="#">Meu Portfólio</a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+  </nav>
+
+  <header class="abertura">
+    <div>
+      <h1>Lucas Gabriel Machado</h1>
+      <p>Estudante de programação. Estou aprendendo Java.</p>
+    </div>
+    <div class="codigo" aria-label="Exemplo de código Java">
+      <div class="barra" aria-hidden="true"><span></span><span></span><span></span></div>
+      <pre id="codigo">public class Eu {
+  public static void main(String[] args) {
+    System.out.println("Estudando e aprendendo todos os dias.");
+  }
+}</pre>
+      <div class="saida" id="saida">&gt; Estudando e aprendendo todos os dias.</div>
+    </div>
+  </header>
+
+  <section id="sobre" class="sobre">
+    <h2>Sobre mim</h2>
+    <p>Estou aprendendo a programar e meu foco principal é Java e outras tecnologias backend. Gosto de transformar ideias em programas que funcionam.</p>
+    <p>Estou fazendo um curso de Java para focar no backend.</p>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos</h2>
+
+    <article class="projeto">
+      <div>
+        <h3>Área do círculo</h3>
+        <p>Exercício de Estrutura Sequencial do meu curso de Java. Você digita o raio de um círculo e o programa calcula a área usando π = 3,14159, mostrando o resultado com quatro casas decimais.</p>
+        <ul class="tags"><li>Java</li></ul>
+      </div>
+      <div class="acoes">
+        <a class="botao" href="https://github.com/Lucasgabriel7824/programa-que-calcula-area-do-circulo-apartir-do-raio/blob/main/src/Main.java">Código</a>
+      </div>
+    </article>
+
+    <div class="em-breve">
+      <strong>EM BREVE:</strong> mais projetos em Java.
+    </div>
+  </section>
+
+  <section id="links">
+    <h2>Links</h2>
+    <div class="links">
+      <a class="botao cheio" href="https://github.com/Lucasgabriel7824">GitHub</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Efeito de digitação do código Java (some se a pessoa preferir menos movimento)
+  (function () {
+    var pre = document.getElementById("codigo");
+    var saida = document.getElementById("saida");
+    var calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (calmo) return;
+    var texto = pre.textContent;
+    var textoSaida = saida.textContent;
+    pre.textContent = "";
+    saida.textContent = "";
+    var i = 0;
+    function digitar() {
+      pre.textContent = texto.slice(0, ++i);
+      if (i < texto.length) { setTimeout(digitar, 28); }
+      else { setTimeout(function () { saida.textContent = textoSaida; }, 350); }
+    }
+    setTimeout(digitar, 400);
+  })();
+</script>
+</body>
+</html>
